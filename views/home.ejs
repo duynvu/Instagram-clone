@@ -1,0 +1,10 @@
+<% include partials/header %>
+
+<h1>Secret page</h1>
+<% if(currentUser) { %>
+<p><%=currentUser.username%></p>
+<% } %>
+
+
+
+<% include partials/footer %>

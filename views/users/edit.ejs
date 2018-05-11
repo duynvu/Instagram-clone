@@ -1,0 +1,158 @@
+
+<head>
+	<title>Account</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  	<link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="account.css">
+  	<style>
+  	    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Rouge+Script');
+
+body{
+	padding-top: 70px;
+	font-family: 'Open Sans', sans-serif;
+	background-color: rgba(231, 227, 228, 0.47);
+}
+#border_div_8{
+	background-color: white;
+}
+
+.navbar-brand{
+	font-family: 'Rouge Script', cursive;
+	font-size: 30px;
+	margin-top: -10px;
+}
+.navbar{
+	background-color: white;
+}
+
+#navbarstyle{
+	justify-content: center;
+   	padding-left: 300px;
+   	padding-right: 300px;
+}
+
+#avatarUser2{
+	margin-left: 110px;
+	margin-top: 10px;
+	margin-bottom: 7px;
+}
+
+.circle{
+	width: 40px;
+}
+#edit{
+	margin: 15px;
+	margin-left: 3px;
+	width: 70%;
+}
+#profile_name{
+	margin-top: 10px;
+}
+  	</style>
+  	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="navbarcontainer">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      		</button>
+	      	</div>
+	      	<div id="navbarstyle">
+				<a href="#" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
+			
+			<form class="navbar-form navbar-left" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="Search">
+		        </div>
+	     	</form>
+
+				<ul class="nav navbar-nav navbar-right">
+ 					<li><a href="#"><i class="far fa-compass fa-lg"></i></a></li>
+					<li><a href="#"><i class="far fa-heart fa-lg"></i></a></li>
+					<li><a href="#"><i class="far fa-user fa-lg"></i></a></li>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6" id="border_div_8">
+				<div class="row" style="margin-bottom: 35px; margin-top: 20px;">
+				<div class="col-lg-4"><img src="<%= currentUser.avatar %>" id="avatarUser2"
+				class="img-circle circle" alt="Cinque Terre">
+				</div>
+
+				<div class="col-lg-8" id="profile_name">
+					<div class="username"><%= currentUser.username %></div>
+				</div>
+				</div>
+				<form action="/users/<%= currentUser.username %>?_method=PUT" method="POST">
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 100px" for='Name'>Name</label></div>
+					<div class="col-lg-8"><input id='edit' type="text" name="Name"></div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 70px" for='Username'>Username</label></div>
+					<div class="col-lg-8"><input id='edit' type="text" name="username" value="<%= currentUser.username %>" disabled></div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 80px" for='Avatar'>Avatar</label></div>
+					<div class="col-lg-8"><input id='edit' type="text" name="avatar" value="<%= currentUser.avatar %>"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 85px" for='Password'>Password</label></div>
+					<div class="col-lg-8"><input id='edit' type="text" name="password" value="<%= currentUser.password %>"></div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 115px" for='Bio'>Bio</label></div>
+					<div class="col-lg-8"><input id='edit' type="text" name="Bio"></div>					
+				</div>
+				<p style="margin-left: 200px; color: gray;" >Private Information</p>
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 100px" for='Email'>Email</label></div>
+					<div class="col-lg-8"><input id='edit' type="email" name="Email"></div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 40px" for='Phone'>Phone number</label></div>
+					<div class="col-lg-8"><input id='edit' type="text" name="Phone"></div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 90px" for='Gender'>Gender</label></div>
+					<div class="col-lg-8">
+						<select name="Gender" style="margin: 3px">
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+							<option value="Not specificed">Not specificed</option>
+						</select>
+					</div>					
+				</div>
+				<div class="row">
+					<div class="col-lg-4"><label id='edit' style="margin-left: 30px" for='Suggestion'>Similar Account Suggestions</label></div>
+					<div class="col-lg-8">
+						<input  type="checkbox" name="Suggestion"><span>Include your account when recommending similar accounts people might want to follow.</span><span><a href=""> [?]</a></span> 
+					</div>
+				</div>
+				<div class="row">
+				        <div class="col-lg-6"><button  style="margin-left: 190px">Submit</button></div>
+				</div>
+				</form>
+
+			</div>
+			<div class="col-lg-3"></div>
+		</div>
+		
+	</div>
+
+
+</body>
+

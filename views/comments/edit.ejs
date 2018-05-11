@@ -1,0 +1,7 @@
+<h1>Edit comment</h1>
+
+<p>Content</p>
+<form action="/photos/<%= comment.photo_id %>/comments/<%= comment.id %>?_method=PUT" method="POST" >
+    <input type="text" value="<%= comment.comment_text%>">
+    <button>Submit</button>
+</form>

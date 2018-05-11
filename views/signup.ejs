@@ -1,0 +1,94 @@
+<head>
+	<title>Instagram Interface</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  	<link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="sign_up.css">
+  	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  	<style>
+  		@import url('https://fonts.googleapis.com/css?family=Rouge+Script');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+.container {
+  margin: 10%;
+}
+
+body{
+	background: url( http://lemon-film.com/wp-content/uploads/2017/12/instagram-stock.jpg );
+	background-size: cover;
+	margin: 10%;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#border_div_4{
+	padding-right: 5px;
+	border: 1px solid rgb(245, 245, 243);
+}
+
+#hp_edit {
+	height: 35px;
+	margin: 15px 10%;
+	width: 80%;
+	font-size: 13px;
+}
+
+#row{
+margin-top: 15px; 
+}
+
+#h1_2 {
+	color: white;
+	font-family: 'Rouge Script',cursive;
+	font-size: 400%;
+	padding-top: 5%;
+	text-align: center;
+}
+
+#letter{
+	color: black;
+	font-family: 'Indie Flower', cursive;
+	font-size: 500%;
+	padding-top: 27%;
+	text-align: center;
+}
+
+p {
+	color: gray;
+}
+
+#bottom_content {
+	padding: 30px 28%;
+}
+
+
+  	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4" id="border_div_4">
+				<div class="col-md-12"><h1 id="h1_2">Instagram</h1></div>
+				<div class="col-md-12"><p>Sign up to see photos and videos from your friends.</p></div>
+				<div class="col-md-12"><hr/></div>
+				<form action="/signup" method="post">
+					<div class="col-md-12"><input id="hp_edit" type="text" name="name" placeholder="Mobile Number or Email"></div>
+					<div class="col-md-12"><input id="hp_edit" type="text" name="username" placeholder="Username"></div>
+					<div class="col-md-12"><input id="hp_edit" type="password" name="password" placeholder="Password"></div>
+					<div class="col-md-12"> <hr/> </div>
+					<div class="col-md-12"><button id="hp_edit" class="btn btn-primary">Sign up</button></div>
+				</form>
+				<div class="col-md-12"  id="bottom_content"><span>Have an account? <a href="#"> Log in</a></span></div>	
+			</div>
+
+			<div class="col-lg-6"></div>
+			<div class="col-lg-2">
+				<p id="letter" >Begin Our Journey</p>
+			</div>
+		</div>
+	</div>
+ 
+   	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+ 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</body>

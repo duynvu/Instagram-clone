@@ -1,0 +1,221 @@
+<head>
+	<title>Instagram</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  	<link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="grid.css">
+  	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  	<style>
+  	    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Rouge+Script');
+
+body{
+	padding-top: 70px;
+	font-family: 'Open Sans', sans-serif;
+	background-color: rgba(231, 227, 228, 0.47);
+}
+#border_div_8{
+	background-color: white;
+}
+.navbar-brand{
+	font-family: 'Rouge Script', cursive;
+	font-size: 30px;
+	margin-top: -10px;
+
+}
+.img-circle{
+	width: 40px;
+	margin-left: 10px: 
+}
+.photo{
+	width: 100%;
+}
+.username{
+	font-weight: 700;
+}
+
+#avatarUser{
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-bottom: 7px;
+}
+.padding{
+	padding-left: 20px;
+	padding-top: 5px;
+}
+.comment{
+	padding-left: 3px;
+	width: 100%;
+}
+.navbar-brand a{
+  color: black;
+    }
+    .navbar-nav>li>a {
+      color: black;
+    } 
+#navbarstyle{
+	justify-content: center;
+	padding: 0 10%;
+}
+/* div {
+  border: 1px black solid;
+} */
+#tags {
+  color: rgb(11, 53, 122);
+}
+.thumbnail {
+  width: 1000px;
+  height: 
+}
+/* .thumbnail {
+  position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+  overflow: hidden;
+} */
+
+/* .thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+} */
+
+.img-circle {
+  max-height: 60px;
+  max-width: 60px;
+}
+.thumbnail {
+    max-height: 100%;
+    max-width: 100%;
+}
+.container {
+    padding: 0 7%;
+}
+/* .thumbnail img {
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+} */
+
+#avatarName {
+  padding-top: 20px;
+}
+
+hr.style14 { 
+  width: 300px;
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+#buttons {
+  padding-top: 15px;
+}
+
+
+#date {
+  font-size: 11px;
+}
+  	</style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      		</button>
+	      	</div>
+	      	<div id="navbarstyle">
+				<a href="/" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
+			
+			<form class="navbar-form navbar-left" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="Search">
+		        </div>
+	     	</form>
+
+				<ul class="nav navbar-nav navbar-right">
+ 					<li><a href="#"><i class="far fa-compass fa-lg"></i></a></li>
+					<li><a href="#"><i class="far fa-heart fa-lg"></i></a></li>
+					<li><a href="/users/<%= currentUser.username%>"><i class="far fa-user fa-lg"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="thumbnail"><img src="<%= photo.image_url %>" alt=""></div>
+          </div>
+          <div class="col-md-5">
+            <div class="row">
+            <a href="/users/<%= photo.username %>">
+            	<div class="col-md-3"><img src="<%= photo.avatarUser %>" id="avatarUser" class="img-circle"></div>  
+              	<div class="col-md-9" id="avatarName"><strong><%= photo.username %></strong></div>  
+            </a>
+            </div>
+            <hr class="style14">
+            <div class="row">
+              <p><a href="/users/<%= photo.username %>"><strong><%= photo.username %></a> </strong><%= photo.caption %> <span id="tags">#hofotd </span></p>
+              <p><a href="/users/<%= photo.username %>"><strong><%= photo.username %></a> <span id="tags">#photooftheday #bestoftheday #justgoshoot #photoshoot #wanderlust #agameoftones #artofvisuals #createcommune #thecreatorclass #portrait #scenery #girl #model #architecture #building #skyscraper #city #vietnam #life #art #artist #instadaily #instalike #instamood #overseas #tbt #quote #photographer #capture #saigon</span> </p>
+			<% comments.forEach(function(comment) { %>
+				<p><a href="/users/<%= photo.username %>"><strong><%= comment.username %></strong></a> <%= comment.comment_text %> <!--<%= comment.created_at %>--></p>
+				<% if(currentUser.username == comment.username) {%>
+					<a href="/photos/<%= photo.id %>/comments/<%= comment.id %>/edit"><button class="btn btn-sm btn-default">EDIT</button></a>
+					<form action="/photos/<%= photo.id %>/comments/<%= comment.id %>?_method=DELETE" method="POST">
+						<button class="btn btn-sm btn-danger">DELETE</button>
+					</form>
+				<% } %>
+			<% }) %>
+            </div>
+             <hr class="style14">
+            <div class="row" id="buttons">
+            	<% if (!checkLiked)  { %>
+				<form action="/photos/<%= photo.id %>/likes" method="POST">
+				  <button><i class="far fa-heart fa-2x" style="color: black" ></i></button>
+					<!--<button class="btn btn-sm btn-success">Like</button>-->
+				</form>
+				<% } else { %>
+				<form action="/photos/<%= photo.id %>/likes?_method=DELETE" method="POST">
+				  <button><i class="far fa-heart fa-2x" style="color: red; border:none;background: none; padding:0;" ></i></button>
+					<!--<button class="btn btn-danger">UNLIKE</button>-->
+				</form>
+				<% } %>
+							<p> <strong><%= likes.nolike %> lượt thích</strong></p>
+              <p id="date"><%= photo.created_at %></p>
+            </div>
+             <hr class="style14">
+            <div class="row">
+             	<form action="/photos/<%= photo.id %>/comments" method="POST">
+					<input type="text" name="comment_text" placeholder="Add a comment...">
+					<button type="submit">submit</button>
+				</form>
+            </div>	
+					
+            </div>
+            
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+

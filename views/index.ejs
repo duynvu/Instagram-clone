@@ -1,0 +1,324 @@
+<% if (currentUser) { %>
+<head>
+	<title>Instagram</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  	<link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="grid.css">
+  	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  	<style>
+  	    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Rouge+Script');
+
+body{
+	padding-top: 70px;
+	font-family: 'Open Sans', sans-serif;
+	background-color: rgba(231, 227, 228, 0.47);
+}
+#border_div_8{
+	background-color: white;
+}
+.navbar-brand{
+	font-family: 'Rouge Script', cursive;
+	font-size: 30px;
+	margin-top: -10px;
+
+}
+.img-circle{
+	width: 40px;
+	margin-left: 10px: 
+}
+.photo{
+	width: 100%;
+}
+.username{
+	font-weight: 700;
+}
+
+#avatarUser{
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-bottom: 7px;
+}
+.padding{
+	padding-left: 20px;
+	padding-top: 5px;
+}
+.comment{
+	padding-left: 3px;
+	width: 100%;
+}
+.navbar-brand a{
+  color: black;
+    }
+    .navbar-nav>li>a {
+      color: black;
+    } 
+#navbarstyle{
+	justify-content: center;
+	padding: 0 10%;
+}
+/* div {
+  border: 1px black solid;
+} */
+#tags {
+  color: rgb(11, 53, 122);
+}
+.thumbnail {
+  width: 1000px;
+  height: 
+}
+/* .thumbnail {
+  position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+  overflow: hidden;
+} */
+
+/* .thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+} */
+
+.img-circle {
+  max-height: 60px;
+  max-width: 60px;
+}
+.thumbnail {
+    max-height: 100%;
+    max-width: 100%;
+}
+.container {
+    padding: 0 7%;
+}
+/* .thumbnail img {
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+} */
+
+#avatarName {
+  padding-top: 20px;
+}
+
+hr.style14 { 
+  width: 300px;
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+#buttons {
+  padding-top: 15px;
+}
+
+
+#date {
+  font-size: 11px;
+}
+  	</style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      		</button>
+	      	</div>
+	      	<div id="navbarstyle">
+				<a href="/" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
+			
+			<form class="navbar-form navbar-left" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="Search">
+		        </div>
+	     	</form>
+
+				<ul class="nav navbar-nav navbar-right">
+ 					<li><a href="/explore"><i class="far fa-compass fa-lg"></i></a></li>
+					<% if (currentUser) { %>
+					    <li><a href="/photos/new"><i class="fa fa-camera fa-lg"></i></a></li>
+					    <li><a href="/users/<%= currentUser.username%>"><i class="far fa-user fa-lg"></i></a></li>
+					<% } else { %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/signup">Sign Up</a></li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="container">
+	  <% data.forEach(function(photo){%>
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8" id="border_div_8">
+				<div class="row">
+					 <a href="/users/<%= photo.username %>">
+					<div class="col-lg-1"><img src="<%= photo.avatar %>" id="avatarUser" class="img-circle"></div>
+					<div class="col-lg-11">
+						<div class="username" style="margin-top: 20px;">
+                            <a href="/users/<%= photo.username %>">
+                                <strong> <%= photo.username %></strong>
+						</div>
+					</div>
+					                            </a>
+
+				</div>
+				<div class="row">
+					<div class="col-lg-12" id='paddinglikes'>
+						<a href="/users/<%= photo.username %>">
+							<img class="photo" src="<%= photo.image_url %>">
+						</a>
+					</div>
+				</div>
+				<div class="padding">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="likes" >
+							<a href="#"><i class="far fa-heart fa-lg" style="color: black;"></i></a>
+							<p> <b> 100 likes </b> </p>
+						</div>
+						<div class="descripton">
+							<p>
+								<span class="username">
+								    <a href="/users/<%= photo.username %>">
+                                        <strong><%= photo.username %></strong>
+                                    </a>
+                                </span> <%= photo.caption %>
+							</p>
+						</div>
+					</div>
+					<div class="col-lg-6"></div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="comments">
+						<p style="font-size: 10px; color: gray;">Load all comments</p>
+						<p>
+							<span class="username">bobby234</span> It's beautiful!!
+						</p>
+						<p>
+							<span class="username">thirstbucket</span> Nice photo!!!
+						</p>
+						<p style="font-size: 10px; color: gray;">49 minute ago</p>
+						</div>
+					<hr />
+					<div class="col-lg-11">
+						<form><input class="comment" type="text" placeholder="Add a comment..."></form>
+					</div>	
+					<div class="option col-lg-1">
+						<i class="fas fa-ellipsis-h"></i>
+					</div>
+					
+					</div>
+					
+				</div>
+
+				</div>
+			</div>
+			<div class="col-lg-2"></div>
+		</div>
+        <% }) %>
+	</div>
+<% } else { %>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  	<link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="grid.css">
+  	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  	<style>
+  		@import url('https://fonts.googleapis.com/css?family=Rouge+Script');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+.container{
+  margin: 10%;
+}
+
+body{
+	background: url( http://lemon-film.com/wp-content/uploads/2017/12/instagram-stock.jpg );
+	background-size: cover;
+	margin: 10%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#border_div_4{
+	margin-top: 3%;
+	padding-bottom: 25px;
+	border: 1px solid rgb(245, 245, 243);
+}
+
+#hp_edit {
+	height: 35px;
+	margin: 15px 10%;
+	width: 80%;
+	font-size: 13px;
+}
+
+#row{
+margin-top: 15px; 
+}
+
+ #h1 {
+	color: white;
+	font-family: 'Rouge Script';
+	font-size: 400%;
+	padding-top: 5%;
+	text-align: center;
+}
+
+p {
+	color: black;
+	font-family: 'Indie Flower', cursive;
+	font-size: 500%;
+	padding-top: 27%;
+	text-align: center;
+}
+
+#bottom_content {
+	padding: 30px 17%;
+}
+
+
+  	</style>
+</head>	
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4" id="border_div_4">
+				<div class="col-md-12"><h1 id="h1">Instagram</h1></div>
+				<form action="/login" method="post">
+					<div class="col-md-12"><input id="hp_edit" type="text" name="username" placeholder="Phone number, username, or email"></div>
+					<div class="col-md-12"><input id="hp_edit" type="password" name="password" placeholder="Password"></div>
+					<div class="col-md-12"> <hr/> </div>
+					<div class="col-md-12"><button id="hp_edit" class="btn btn-primary">Log in</button></div>
+					<div class="col-md-12"  id="bottom_content"><span>Don't have an account? <a href="/signup">  Sign up</a></span></div>	
+				</form>
+			</div>
+
+			<div class="col-lg-6"></div>
+			<div class="col-lg-2">
+				<p >Begin Our Journey</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<% } %>
+
+<% include partials/footer %>

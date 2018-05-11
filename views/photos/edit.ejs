@@ -1,0 +1,9 @@
+<h1>EDIT PHOTO</h1>
+
+<form action="/photos/<%=photo.id%>?_method=PUT" method="POST">
+    <p>image_url</p>
+    <input type="text" name="image_url" value="<%= photo.image_url %>" disabled>
+    <p>Caption</p>
+   <input type="text" name="caption" value="<%= photo.caption %>" required>
+   <button type="submit">submit</button>
+</form>
