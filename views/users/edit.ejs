@@ -67,16 +67,17 @@ body{
 	      	<div id="navbarstyle">
 				<a href="#" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
 			
-			<form class="navbar-form navbar-left" role="search">
-		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Search">
-		        </div>
-	     	</form>
+      <form class="navbar-form navbar-left" role="search" action="/explore/tags" method="POST">
+            <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search tags" name="tag">
+            </div>
+        </form>
 
 				<ul class="nav navbar-nav navbar-right">
  					<li><a href="#"><i class="far fa-compass fa-lg"></i></a></li>
 					<li><a href="#"><i class="far fa-heart fa-lg"></i></a></li>
-					<li><a href="#"><i class="far fa-user fa-lg"></i></a></li>
+					<li><a href="/users/<%= currentUser.username%>"><i class="far fa-user fa-lg"></i></a></li>
+          			<li><a href="/logout"><i class="fa fa-sign-out-alt fa-lg"></i></a></li>
 				</ul>
 			</div>
 			</div>
