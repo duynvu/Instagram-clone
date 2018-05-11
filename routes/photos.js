@@ -6,10 +6,9 @@ var methodOverride = require("method-override"); // lib to write for REST
 
 
 var mysql = require("mysql");
-
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'vuduy',  
+  user     : 'vuduy',
   database : 'insta_clone'
 });
 // Show new photos page

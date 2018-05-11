@@ -131,7 +131,7 @@ hr.style14 {
 					    <li><a href="/photos/new"><i class="fa fa-camera fa-lg"></i></a></li>
 					    <li><a href="/users/<%= currentUser.username%>"><i class="far fa-user fa-lg"></i></a></li>
 					<% } else { %>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="/">Login</a></li>
                         <li><a href="/signup">Sign Up</a></li>
 					<% } %>
 				</ul>
@@ -230,26 +230,26 @@ hr.style14 {
 
 <div class="row">
   <div class="col-md-4">
-    <img src="<%= data[0].avatar %>" id="avatarUser" class="img-circle" alt="Cinque Terre">    
+    <img src="<%= user.avatar %>" id="avatarUser" class="img-circle">    
   </div>
   <div id="topRow" class="col-md-8">
     <div class="row">
-      <div class="col-md-3"><h3 id="userName"><%= data[0].username %></h3></div> 
+      <div class="col-md-3"><h3 id="userName"><%= user.username %></h3></div> 
       <div id="button" class="col-md-9">
       <% if (!currentUser) {%>
-      <% } else if (currentUser.username != data[0].username) { %> 
+      <% } else if (currentUser.username != user.username) { %> 
         <% if(!checkFollowed) { %>
-          <form action="/users/<%= data[0].username %>/follows" method="POST">
+          <form action="/users/<%= user.username %>/follows" method="POST">
             <button type="submit" class="btn btn-primary btn-lg">Follow</button>
           </form>
         <% } else { %> 
-          <form action="/users/<%= data[0].username %>/follows?_method=DELETE" method="POST">
+          <form action="/users/<%= user.username %>/follows?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-default btn-lg">Following</button>
           </form>
         <% } %>
-      <% } else if (currentUser.username == data[0].username) { %>
-        <button type="button" class="btn btn-default btn-lg"><a href="/users/<%= data[0].username %>/edit">Chỉnh sửa trang cá nhân</a></button>
-        <a href="/users/<%= data[0].username %>/edit"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+      <% } else if (currentUser.username == user.username) { %>
+        <button type="button" class="btn btn-default btn-lg"><a href="/users/<%= user.username %>/edit">Chỉnh sửa trang cá nhân</a></button>
+        <a href="/users/<%= user.username %>/edit"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
       <% } %>
       </div>    
     </div>
@@ -259,7 +259,7 @@ hr.style14 {
       <div class="col-md-7">Đang theo dõi <span class="boldNumber"><%= nofollower.nofollower %></span> người dùng</div>     
     </div>
     <div class="row">
-      <div class="col-md-12"><span class="boldNumber"><%= data[0].username %></span> nothing to say that much. </div>
+      <div class="col-md-12"><span class="boldNumber"><%= user.username %></span> nothing to say that much. </div>
     </div>
   </div>
 </div>

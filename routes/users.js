@@ -8,7 +8,7 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'vuduy',  
+  user     : 'vuduy',
   database : 'insta_clone'
 });
 
@@ -20,12 +20,14 @@ router.get("/", function(req, res) {
 router.get("/:username", function(req,res) {
 	async function getquery() {
     var conn = require('../database/database');
-    var q1="SELECT * FROM users JOIN photos ON users.id = photos.user_id WHERE users.username = ?";
+    var q ="SELECT * FROM users WHERE users.username = ?";
+    var q1="SELECT image_url, photos.id as id FROM users JOIN photos ON users.id = photos.user_id WHERE users.username = ?";
     var q2="SELECT COUNT(*) as nofollower FROM follows WHERE follower_id = (SELECT id FROM users WHERE username= ?)";
     var q3="SELECT COUNT(*) as nofollowee FROM follows WHERE followee_id = (SELECT id FROM users WHERE username= ?)";
     var q4="SELECT * FROM follows WHERE follower_id = ? AND followee_id = (SELECT id FROM users WHERE username= ?)";
-    var photos, nofollower, nofollowee, checkFollowed;
+    var user, photos, nofollower, nofollowee, checkFollowed;
     
+    user = await conn.query(q, req.params.username);
     photos = await conn.query(q1, req.params.username);
     nofollower = await conn.query(q2, req.params.username);
     nofollowee = await conn.query(q3, req.params.username);
@@ -37,7 +39,7 @@ router.get("/:username", function(req,res) {
     // console.log(user);
     // console.log(nofollowee[0]);
     // console.log(nofollower[0]);
-    res.render("users/index", {data: photos, nofollower: nofollower[0], nofollowee: nofollowee[0], checkFollowed: checkFollowed[0]});
+    res.render("users/index", {user: user[0], data: photos, nofollower: nofollower[0], nofollowee: nofollowee[0], checkFollowed: checkFollowed[0]});
 
     // photoInfo = await conn.query(q1, req.params.pid);
     // commentsInfo = await conn.query(q2, req.params.pid);
