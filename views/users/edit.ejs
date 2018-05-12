@@ -29,8 +29,7 @@ body{
 
 #navbarstyle{
 	justify-content: center;
-   	padding-left: 300px;
-   	padding-right: 300px;
+	padding: 0 10%;
 }
 
 #avatarUser2{
@@ -65,7 +64,7 @@ body{
 	      		</button>
 	      	</div>
 	      	<div id="navbarstyle">
-				<a href="#" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
+				<a href="/" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
 			
       <form class="navbar-form navbar-left" role="search" action="/explore/tags" method="POST">
             <div class="form-group">
@@ -98,10 +97,6 @@ body{
 				</div>
 				<form action="/users/<%= currentUser.username %>?_method=PUT" method="POST">
 				<div class="row">
-					<div class="col-lg-4"><label id='edit' style="margin-left: 100px" for='Name'>Name</label></div>
-					<div class="col-lg-8"><input id='edit' type="text" name="Name"></div>
-				</div>
-				<div class="row">
 					<div class="col-lg-4"><label id='edit' style="margin-left: 70px" for='Username'>Username</label></div>
 					<div class="col-lg-8"><input id='edit' type="text" name="username" value="<%= currentUser.username %>" disabled></div>
 				</div>
@@ -115,36 +110,7 @@ body{
 					<div class="col-lg-8"><input id='edit' type="text" name="password" value="<%= currentUser.password %>"></div>
 				</div>
 				<div class="row">
-					<div class="col-lg-4"><label id='edit' style="margin-left: 115px" for='Bio'>Bio</label></div>
-					<div class="col-lg-8"><input id='edit' type="text" name="Bio"></div>					
-				</div>
-				<p style="margin-left: 200px; color: gray;" >Private Information</p>
-				<div class="row">
-					<div class="col-lg-4"><label id='edit' style="margin-left: 100px" for='Email'>Email</label></div>
-					<div class="col-lg-8"><input id='edit' type="email" name="Email"></div>
-				</div>
-				<div class="row">
-					<div class="col-lg-4"><label id='edit' style="margin-left: 40px" for='Phone'>Phone number</label></div>
-					<div class="col-lg-8"><input id='edit' type="text" name="Phone"></div>
-				</div>
-				<div class="row">
-					<div class="col-lg-4"><label id='edit' style="margin-left: 90px" for='Gender'>Gender</label></div>
-					<div class="col-lg-8">
-						<select name="Gender" style="margin: 3px">
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
-							<option value="Not specificed">Not specificed</option>
-						</select>
-					</div>					
-				</div>
-				<div class="row">
-					<div class="col-lg-4"><label id='edit' style="margin-left: 30px" for='Suggestion'>Similar Account Suggestions</label></div>
-					<div class="col-lg-8">
-						<input  type="checkbox" name="Suggestion"><span>Include your account when recommending similar accounts people might want to follow.</span><span><a href=""> [?]</a></span> 
-					</div>
-				</div>
-				<div class="row">
-				        <div class="col-lg-6"><button  style="margin-left: 190px">Submit</button></div>
+				        <div class="col-lg-6"><button class="btn btn-success btn-md" style="margin-left: 190px">Submit</button></div>
 				</div>
 				</form>
 

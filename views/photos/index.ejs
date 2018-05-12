@@ -182,7 +182,7 @@ hr.style14 {
 			<% comments.forEach(function(comment) { %>
 				<p><a href="/users/<%= photo.username %>"><strong><%= comment.username %></strong></a> <%= comment.comment_text %> <!--<%= comment.created_at %>--></p>
 				<% if(currentUser.username == comment.username) {%>
-					<a href="/photos/<%= photo.id %>/comments/<%= comment.id %>/edit"><button class="btn btn-sm btn-default">EDIT</button></a>
+					<a href="/photos/<%= photo.id %>/comments/<%= comment.id %>/edit"><button class="btn btn-sm btn-success">EDIT</button></a>
 					<form action="/photos/<%= photo.id %>/comments/<%= comment.id %>?_method=DELETE" method="POST">
 						<button class="btn btn-sm btn-danger">DELETE</button>
 					</form>

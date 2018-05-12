@@ -42,6 +42,7 @@ router.put("/:cid", function(req, res) {
   connection.query(q, [req.body.comment_text, req.params.cid], function(err, results) {
     if(err) throw err;
     console.log(results);
+    res.redirect("/photos/"+req.params.pid);
   })
 })
 
