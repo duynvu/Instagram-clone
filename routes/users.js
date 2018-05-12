@@ -21,7 +21,7 @@ router.get("/:username", function(req,res) {
 	async function getquery() {
     var conn = require('../database/database');
     var q ="SELECT * FROM users WHERE users.username = ?";
-    var q1="SELECT image_url, photos.id as id FROM users JOIN photos ON users.id = photos.user_id WHERE users.username = ?";
+    var q1="SELECT image_url, photos.id as id FROM users JOIN photos ON users.id = photos.user_id WHERE users.username = ? ORDER BY photos.created_at DESC";
     var q2="SELECT COUNT(*) as nofollower FROM follows WHERE follower_id = (SELECT id FROM users WHERE username= ?)";
     var q3="SELECT COUNT(*) as nofollowee FROM follows WHERE followee_id = (SELECT id FROM users WHERE username= ?)";
     var q4="SELECT * FROM follows WHERE follower_id = ? AND followee_id = (SELECT id FROM users WHERE username= ?)";

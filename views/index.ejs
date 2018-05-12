@@ -140,9 +140,9 @@ hr.style14 {
 	      	<div id="navbarstyle">
 				<a href="/" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
 			
-			<form class="navbar-form navbar-left" role="search">
+			<form class="navbar-form navbar-left" role="search" action="/explore/tags" method="POST">
 		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Search">
+		              <input type="text" class="form-control" placeholder="Search tags" name="tag">
 		        </div>
 	     	</form>
 
@@ -180,7 +180,7 @@ hr.style14 {
 				</div>
 				<div class="row">
 					<div class="col-lg-12" id='paddinglikes'>
-						<a href="/users/<%= photo.username %>">
+						<a href="/photos/<%= photo.id %>">
 							<img class="photo" src="<%= photo.image_url %>">
 						</a>
 					</div>
