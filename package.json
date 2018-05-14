@@ -1,7 +1,7 @@
 {
   "name": "insta-clone",
   "version": "1.5.0",
-  "description": "",
+  "description": "DONE: - likeRouter - commentRouter - photoRouter - userRouter - indexRouter",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,12 +11,20 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
-    "ejs": "^2.5.8",
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "method-override": "^2.3.10",
     "mysql": "^2.15.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kidharp/Instagram-clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kidharp/Instagram-clone/issues"
+  },
+  "homepage": "https://github.com/kidharp/Instagram-clone#readme"
 }

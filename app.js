@@ -20,25 +20,9 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'vuduy',  
+  password : 'password',
   database : 'insta_clone'
 });
-
-// var connection = require('./database/database')
-
-// var a, b;
-// async function getquery() {
-//     a = await connection.query("SELECT image_url, photos.created_at, IFNULL(caption,'') as caption, username FROM photos INNER JOIN users ON photos.user_id = users.id WHERE photos.id = ?", 2);
-//     b = await connection.query("SELECT comments.id, users.username, comments.created_at, comments.comment_text FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.photo_id = (SELECT photos.id FROM photos WHERE photos.id = ?)", 2)
-//     console.log(a[0]);
-//     console.log(b[0]);
-//     console.log(b[1]);
-// }
-// getquery();
-// connection.query("SELECT * FROM users", function(err, results) {
-//     if(err) throw err;
-//     console.log(results);
-// });
-
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());

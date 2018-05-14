@@ -10,7 +10,8 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'vuduy',  
+  user     : 'vuduy', 
+  password : 'password', 
   database : 'insta_clone'
 });
 

@@ -9,6 +9,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'vuduy',
+  password : 'password',
   database : 'insta_clone'
 });
 // Show new photos page
