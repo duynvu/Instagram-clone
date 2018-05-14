@@ -119,17 +119,19 @@ hr.style14 {
 	      	<div id="navbarstyle">
 				<a href="/" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
 			
-			<form class="navbar-form navbar-left" role="search">
-		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Search">
-		        </div>
-	     	</form>
+      <form class="navbar-form navbar-left" role="search" action="/explore/tags" method="POST">
+            <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search tags" name="tag">
+            </div>
+        </form>
 
 				<ul class="nav navbar-nav navbar-right">
  					<li><a href="/explore"><i class="far fa-compass fa-lg"></i></a></li>
 					<% if (currentUser) { %>
 					    <li><a href="/photos/new"><i class="fa fa-camera fa-lg"></i></a></li>
 					    <li><a href="/users/<%= currentUser.username%>"><i class="far fa-user fa-lg"></i></a></li>
+              <li><a href="/logout"><i class="fa fa-sign-out-alt fa-lg"></i></a></li>
+
 					<% } else { %>
                         <li><a href="/">Login</a></li>
                         <li><a href="/signup">Sign Up</a></li>
@@ -257,9 +259,6 @@ hr.style14 {
       <div class="col-md-2"><span class="boldNumber"><%= data.length %></span> bài viết</div>
       <div class="col-md-3"><span class="boldNumber"><%= nofollowee.nofollowee %></span> người theo dõi</div>
       <div class="col-md-7">Đang theo dõi <span class="boldNumber"><%= nofollower.nofollower %></span> người dùng</div>     
-    </div>
-    <div class="row">
-      <div class="col-md-12"><span class="boldNumber"><%= user.username %></span> nothing to say that much. </div>
     </div>
   </div>
 </div>

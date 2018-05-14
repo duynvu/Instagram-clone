@@ -8,17 +8,34 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'vuduy',  
+  user     : 'vuduy',
+  password : 'password',
   database : 'insta_clone'
 });
 
 router.get("/",	function(req,res) {
+	async function getquery() {
+    	var conn = require('../database/database');
+		var q1 = "SELECT photos.id as id, image_url, caption, username, avatar, DATE_FORMAT(photos.created_at, '%M %d %Y %r') as created_at FROM photos JOIN follows ON photos.user_id = follows.followee_id JOIN users ON follows.followee_id = users.id WHERE follows.follower_id = ?";
+    	var q2 = "SELECT photos.id as id, image_url, caption, username, avatar, DATE_FORMAT(photos.created_at, '%M %d %Y %r') as created_at FROM photos JOIN users ON photos.user_id = users.id WHERE users.id = ?";
+    	var followerPhotos, ownPhotos, results;
+    	followerPhotos = await conn.query(q1, req.user.id);
+    	ownPhotos = await conn.query(q2, req.user.id);
+    	results = await followerPhotos.concat(ownPhotos);
+    	await results.sort(function(a,b){
+    		if(a.created_at<b.created_at)
+    			return 1;
+    		else if(a.created_at>b.created_at)
+    			return -1;
+    		else
+    			return 0;
+    	});
+    	console.log(results);
+    	res.render("index", {data: results})
+	}
+
 	if(req.user) {
-		var q = "SELECT photos.id as id, image_url, caption, username, avatar FROM photos JOIN follows ON photos.user_id = follows.followee_id JOIN users ON follows.followee_id = users.id WHERE follows.follower_id = ? ORDER BY photos.created_at DESC";
-		connection.query(q,[req.user.id], function(err, results) {
-			if (err) throw err;
-			else res.render("index", {data: results});
-		})
+			getquery();
 	} else {
 		res.render("index");
 	}
@@ -49,14 +66,6 @@ router.post('/login', passport.authenticate('local-login', {
 	}),
     function(req, res) {
 });
-
-router.get("/home",isLoggedIn, function(req, res) {
-	var newdata = new Object();
-	connection.query("SELECT username, image_url FROM users JOIN photos ON users.id = photos.user_id WHERE users.id = ?", [req.user.id], function(err, results) {
-		if (err) throw err;
-		else res.render("home", {data: results});
-	})
-})
 
 router.get("/logout", function(req,res) {
 	req.logout();

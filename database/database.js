@@ -4,7 +4,8 @@ var util = require('util');
 var pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
-    user: 'vuduy',  
+    user: 'vuduy',
+    password: 'password',
     database: 'insta_clone'
 })
 pool.getConnection((err, connection) => {

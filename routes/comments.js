@@ -10,7 +10,8 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'vuduy',  
+  user     : 'vuduy', 
+  password : 'password', 
   database : 'insta_clone'
 });
 
@@ -42,6 +43,7 @@ router.put("/:cid", function(req, res) {
   connection.query(q, [req.body.comment_text, req.params.cid], function(err, results) {
     if(err) throw err;
     console.log(results);
+    res.redirect("/photos/"+req.params.pid);
   })
 })
 
