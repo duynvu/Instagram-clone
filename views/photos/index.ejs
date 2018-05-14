@@ -139,16 +139,24 @@ hr.style14 {
 	      	<div id="navbarstyle">
 				<a href="/" class="navbar-brand"><span class="fab fa-instagram fa-lg"></span> | Instagram</a>
 			
-			<form class="navbar-form navbar-left" role="search">
-		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Search">
-		        </div>
-	     	</form>
+      <form class="navbar-form navbar-left" role="search" action="/explore/tags" method="POST">
+            <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search tags" name="tag">
+            </div>
+        </form>
 
 				<ul class="nav navbar-nav navbar-right">
- 					<li><a href="#"><i class="far fa-compass fa-lg"></i></a></li>
-					<li><a href="#"><i class="far fa-heart fa-lg"></i></a></li>
-					<li><a href="/users/<%= currentUser.username%>"><i class="far fa-user fa-lg"></i></a></li>
+          <li><a href="/explore"><i class="far fa-compass fa-lg"></i></a></li>
+          <% if (currentUser) { %>
+              <li><a href="/photos/new"><i class="fa fa-camera fa-lg"></i></a></li>
+              <li><a href="/users/<%= currentUser.username%>"><i class="far fa-user fa-lg"></i></a></li>
+              <li><a href="/logout"><i class="fa fa-sign-out-alt fa-lg"></i></a></li>
+
+          <% } else { %>
+                        <li><a href="/">Login</a></li>
+                        <li><a href="/signup">Sign Up</a></li>
+          <% } %>
+
 				</ul>
 			</div>
 		</div>
@@ -170,12 +178,11 @@ hr.style14 {
             </div>
             <hr class="style14">
             <div class="row">
-              <p><a href="/users/<%= photo.username %>"><strong><%= photo.username %></a> </strong><%= photo.caption %> <span id="tags">#hofotd </span></p>
-              <p><a href="/users/<%= photo.username %>"><strong><%= photo.username %></a> <span id="tags">#photooftheday #bestoftheday #justgoshoot #photoshoot #wanderlust #agameoftones #artofvisuals #createcommune #thecreatorclass #portrait #scenery #girl #model #architecture #building #skyscraper #city #vietnam #life #art #artist #instadaily #instalike #instamood #overseas #tbt #quote #photographer #capture #saigon</span> </p>
+              <p><a href="/users/<%= photo.username %>"><strong><%= photo.username %></a> </strong><%= photo.caption %> </p>
 			<% comments.forEach(function(comment) { %>
 				<p><a href="/users/<%= photo.username %>"><strong><%= comment.username %></strong></a> <%= comment.comment_text %> <!--<%= comment.created_at %>--></p>
 				<% if(currentUser.username == comment.username) {%>
-					<a href="/photos/<%= photo.id %>/comments/<%= comment.id %>/edit"><button class="btn btn-sm btn-default">EDIT</button></a>
+					<a href="/photos/<%= photo.id %>/comments/<%= comment.id %>/edit"><button class="btn btn-sm btn-success">EDIT</button></a>
 					<form action="/photos/<%= photo.id %>/comments/<%= comment.id %>?_method=DELETE" method="POST">
 						<button class="btn btn-sm btn-danger">DELETE</button>
 					</form>
